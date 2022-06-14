@@ -27,7 +27,6 @@ const [fri, setFri] = useState([])
 const [sat, setSat] = useState([])
 
 const app = document.getElementById("app");
-const button = document.getElementById("button");
 
 window.onload = function(){
     var d = new Date()
@@ -109,12 +108,88 @@ function render() {
                     <div class='dates'>
                       <div class="button">
                         <p class="day">Mon</p>
-                        <div class="col-day">
-                          <button class="btn"></button>
+                        <div class="col-day" id="mon">
+                        </div>
+                      </div>
+                      <div class="button">
+                        <p class="day">Tue</p>
+                        <div class="col-day" id="tue">
+                        </div>
+                      </div>
+                      <div class="button">
+                        <p class="day">Wed</p>
+                        <div class="col-day" id="wed">
+                        </div>
+                      </div>
+                      <div class="button">
+                        <p class="day">Thu</p>
+                        <div class="col-day" id="thu">
+                        </div>
+                      </div>
+                      <div class="button">
+                        <p class="day">Fri</p>
+                        <div class="col-day" id="fri">
+                        </div>
+                      </div>
+                      <div class="button">
+                        <p class="day">Sat</p>
+                        <div class="col-day" id="sat">
+                        </div>
+                      </div>
+                      <div class="button">
+                        <p class="day">Sun</p>
+                        <div class="col-day" id="sun">
                         </div>
                       </div>
                     </div>
                   </div>`
-}
+  let parent = document.getElementById("mon")
+  for(let i=0; i < mon().length; i++){
+    let child  = document.createElement("button")
+    child.innerHTML = mon()[i]
+    parent.appendChild(child)
+  }
 
+  let parent2 = document.getElementById("tue")
+  for(let i=0; i < tue().length; i++){
+    let child  = document.createElement("button")
+    child.innerHTML = tue()[i]
+    parent2.appendChild(child)
+  }
+
+  let parent3 = document.getElementById("wed")
+  for(let i=0; i < wed().length; i++){
+    let child  = document.createElement("button")
+    child.innerHTML = wed()[i]
+    parent3.appendChild(child)
+  }
+
+  let parent4 = document.getElementById("thu")
+  for(let i=0; i < thu().length; i++){
+    let child  = document.createElement("button")
+    child.innerHTML = thu()[i]
+    parent4.appendChild(child)
+  }
+
+  let parent5 = document.getElementById("fri")
+  for(let i=0; i < fri().length; i++){
+    let child  = document.createElement("button")
+    child.innerHTML = fri()[i]
+    parent5.appendChild(child)
+  }
+
+  let parent6 = document.getElementById("sat")
+  for(let i=0; i < sat().length; i++){
+    let child  = document.createElement("button")
+    child.innerHTML = sat()[i]
+    parent6.appendChild(child)
+  }
+
+  let parent7 = document.getElementById("sun")
+  for(let i=0; i < sun().length; i++){
+    let child  = document.createElement("button")
+    child.innerHTML = sun()[i]
+    parent7.appendChild(child)
+  }
+}
 render();
