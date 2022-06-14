@@ -1,125 +1,120 @@
 function useState(defaultValue) {
-  // 👆🏻We create a function useState with a default value
   let value = defaultValue;
-  // 👆🏻We create a local variable value = defaultValue
   function getValue() {
-    // 👆🏻We create a function getValue to get the value that return the value
     return value;
   }
   function setValue(newValue) {
-    // 👆🏻We create a function to set the value with parameter newValue
-    value = newValue; // 👈🏻 We change the value for newValue
-    render(); // 👈🏻We run the render function on our app
+    value = newValue;
+    render();
   }
   return [getValue, setValue];
-  // 👆🏻We return an array with the value and the function
 }
 const [counter, setCounter] = useState(0)
+const [month, setMonth] = useState("")
+const [year, setYear] = useState("")
+const [dateValue, setDateValue] = useState("")
+const [timeValue, setTimeValue] = useState("")
+const [timezone, setTimezone] = useState("")
+const [name, setName] = useState("")
+const [email, setEmail] = useState("")
 const [dates, setDates] = useState([])
+const [sun, setSun] = useState([])
+const [mon, setMon] = useState([])
+const [tue, setTue] = useState([])
+const [wed, setWed] = useState([])
+const [thu, setThu] = useState([])
+const [fri, setFri] = useState([])
+const [sat, setSat] = useState([])
 
 const app = document.getElementById("app");
 const button = document.getElementById("button");
 
-button.addEventListener("click", increment);
-
-function render() {
-  app.innerHTML = dates();
-  // 👆🏻We display the counter inside our html and update when render is called
+window.onload = function(){
+    var d = new Date()
+    setTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone)
+    setMonth(d.getMonth())
+    setYear(d.getFullYear())
+    getDatesInMonth()
+    getDaysOfDates()
 }
 
-function increment() {
-  setCounter(counter() + 1);
-  const fdfd = [...dates()]
-  fdfd.push(counter())
-  setDates(fdfd)
-  console.log(dates())
+const getDatesInMonth = () => {
+    var date = new Date(year(), month());
+    const newDates = []
+    while(date.getMonth() === month()){
+        newDates.push(new Date(date));
+        date.setDate(date.getDate() + 1);
+    }
+    setDates(newDates)
+}
+
+const getDaysOfDates = () => {
+    setSun([])
+    setMon([])
+    setTue([])
+    setWed([])
+    setThu([])
+    setFri([])
+    setSat([])
+    for (let i = 0; i < dates().length; i++) {
+        var date = new Date(dates()[i])
+        var date_to_str = date.toString()
+        var strings = []
+        strings.push(date_to_str.trim().split(" "));
+        for(let i = 0; i < strings.length; i++){
+            if(strings[i][0] == 'Mon'){
+              const monn = [...mon()]
+              monn.push(strings[i][2])
+              setMon(monn)
+            }
+            if(strings[i][0] == 'Tue'){
+              const tuee = [...tue()]
+              tuee.push(strings[i][2])
+              setTue(tuee)
+            }
+            if(strings[i][0] == 'Wed'){
+              const wedd = [...wed()]
+              wedd.push(strings[i][2])
+              setWed(wedd)
+            }
+            if(strings[i][0] == 'Thu'){
+              const thuu = [...thu()]
+              thuu.push(strings[i][2])
+              setThu(thuu)
+            }
+            if(strings[i][0] == 'Fri'){
+              const frii = [...fri()]
+              frii.push(strings[i][2])
+              setFri(frii)
+            }
+            if(strings[i][0] == 'Sat'){
+              const satt = [...sat()]
+              satt.push(strings[i][2])
+              setSat(satt)
+            }
+            if(strings[i][0] == 'Sun'){
+              const sunn = [...sun()]
+              sunn.push(strings[i][2])
+              setSun(sunn)
+            }
+            else{
+             console.log(false)
+            }
+        }
+    } 
+}
+
+function render() {
+  app.innerHTML = `<div class='container'>
+                    <div class='dates'>
+                      <div class="button">
+                        <p class="day">Mon</p>
+                        <div class="col-day">
+                          <button class="btn"></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>`
 }
 
 render();
-// const data = new Reactive({
-//     month: "",
-//     year: "",
-//     dates: [],
-//     sun: [],
-//     mon: [],
-//     tue: [],
-//     wed: [],
-//     thu: [],
-//     fri: [],
-//     sat: [],
-//     dateValue: "",
-//     timeValue: "",
-//     timezone: "",
-//     name: "",
-//     email: ""
-// })
-
-// window.addEventListener('load', () => {
-//     var d = new Date()
-//     data.contents.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
-//     data.contents.month = d.getMonth()
-//     data.contents.year = d.getFullYear()
-//     getDaysOfDates()
-// })
-
-// const nameHeading = document.getElementById("name-text")
-// nameHeading.innerText = data.contents.dates
-
-// data.listen('dates', (change) => {
-//     const nameHeading = document.getElementById("name-text")
-//     nameHeading.innerText = change
-//     console.log(data.contents.dates)
-// })
-
-// const getDates = () => {
-//     var date = new Date(this.year, this.month);
-//     data.contents.dates = []
-//     const dates = []
-//     while(date.getMonth() === this.month){
-//         dates.push(new Date(date));
-//         data.contents.dates.push(new Date(date))
-//         date.setDate(date.getDate() + 1);
-//     }
-// }
-
-// const getDaysOfDates = () => {
-//     data.contents.sun = []
-//     data.contents.mon = []
-//     data.contents.tue = []
-//     data.contents.wed = []
-//     data.contents.thu = []
-//     data.contents.fri = []
-//     data.contents.sat = []
-//     for (let i = 0; i < this.dates.length; i++) {
-//         var date = new Date(this.dates[i])
-//         var date_to_str = date.toString()
-//         var strings = []
-//         strings.push(date_to_str.trim().split(" "));
-//         for(let i = 0; i < strings.length; i++){
-//             if(strings[i][0] == 'Mon'){
-//              data.contents.mon.push(strings[i][2])
-//             }
-//             if(strings[i][0] == 'Tue'){
-//              data.contents.push(strings[i][2])
-//             }
-//             if(strings[i][0] == 'Wed'){
-//              data.contents.push(strings[i][2])
-//             }
-//             if(strings[i][0] == 'Thu'){
-//              data.contents.thu.push(strings[i][2])
-//             }
-//             if(strings[i][0] == 'Fri'){
-//              data.contents.fri.push(strings[i][2])
-//             }
-//             if(strings[i][0] == 'Sat'){
-//              data.contents.sat.push(strings[i][2])
-//             }
-//             if(strings[i][0] == 'Sun'){
-//              data.contents.push(strings[i][2])
-//             }
-//             else{
-//              console.log(false)
-//             }
-//         }
-//     } 
-// }
