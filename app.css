@@ -1,0 +1,6 @@
+#container .dates{
+    display: grid;
+    grid-template-columns: repeat(7, 2rem);
+}
+button{
+    cursor: pointer;
