@@ -184,60 +184,6 @@ const fixArrayLength = () => {
   }
 }
 
-const emptySpace = () => {
-  let btn_mon_length = document.getElementsByClassName("btn-mon").length
-  let btn_tue_length = document.getElementsByClassName("btn-tue").length
-  let btn_wed_length = document.getElementsByClassName("btn-wed").length
-  let btn_thu_length = document.getElementsByClassName("btn-thu").length
-  let btn_fri_length = document.getElementsByClassName("btn-fri").length
-  let btn_sat_length = document.getElementsByClassName("btn-sat").length
-  let btn_sun_length = document.getElementsByClassName("btn-sun").length
-
-  for(let i=0; i < btn_mon_length; i++){
-    var btn_mon = document.getElementsByClassName('btn-mon')[i]
-    if(btn_mon.innerHTML == ' '){
-      btn_mon.style.visibility = 'hidden'
-    }
-  }
-
-  for(let i=0; i < btn_tue_length; i++){
-    var btn_tue = document.getElementsByClassName('btn-tue')[i]
-    if(btn_tue.innerHTML == ' '){
-      btn_tue.style.visibility = 'hidden'
-    }
-  }
-  for(let i=0; i < btn_wed_length; i++){
-    var btn_wed = document.getElementsByClassName('btn-wed')[i];
-    if(btn_wed.innerHTML == ' '){
-      btn_wed.style.visibility = 'hidden'
-    }
-  }
-  for(let i=0; i < btn_thu_length; i++){
-    var btn_thu = document.getElementsByClassName('btn-thu')[i]
-    if(btn_thu.innerHTML == ' '){
-      btn_thu.style.visibility = 'hidden'
-    }
-  }
-  for(let i=0; i < btn_fri_length; i++){
-    var btn_fri = document.getElementsByClassName('btn-fri')[i]
-    if(btn_fri.innerHTML == ' '){
-      btn_fri.style.visibility = 'hidden'
-    }
-  }
-  for(let i=0; i < btn_sat_length; i++){
-    var btn_sat = document.getElementsByClassName('btn-sat')[i]
-    if(btn_sat.innerHTML == ' '){
-      btn_sat.style.visibility = 'hidden'
-    }
-  }
-  for(let i=0; i < btn_sun_length; i++){
-    var btn_sun = document.getElementsByClassName('btn-sun')[i]
-    if(btn_sun.innerHTML == ' '){
-      btn_sun.style.visibility = 'hidden'
-    }
-  }
-}
-
 const next = () => {
   setMonth(month() + 1)
   getDatesInMonth()
@@ -254,55 +200,147 @@ const prev = () => {
 
 function render() {
   app.innerHTML = `<div id='container'>
-                    <div class='dates'>
-                      <div class="button">
-                        <p class="day">Mon</p>
-                        <div class="col-day" id="mon">
+                    <div id="details">
+                      <h3 class="u-name heading-3">John Doe</h3>
+                      <h1 class="event-name heading-1">30 Minute Meeting</h1>
+                      <h3 class="duration heading-3">30 min</h3>
+                      <p class="description copy__para--medium">Ipsum amet aliquid molestiae nam ratione? Consectetur consequatur voluptate ipsa repellat placeat quidem Ut ipsam eaque libero exercitationem sint Earum voluptatem sint mollitia non provident. Exercitationem expedita sunt quasi aut exercitationem Quod impedit excepturi reprehenderit quaerat expedita ex accusantium. Enim</p>
+                    </div>
+                    <div id="select-container">
+                      <h2 class="heading-2">Select a Date & Time</h2>
+                      <div class="date-time">
+
+                        <div class='dates-picker'>
+
+                          <div id="month">
+                            <p>June 2022</p>
+                            <div id="month__btns">
+                            </div>
+                          </div>
+
+                          <div class="dates">
+                            <div class="button">
+                              <p class="day">Mon</p>
+                              <div class="col-day" id="mon">
+                              </div>
+                            </div>
+                            <div class="button">
+                              <p class="day">Tue</p>
+                              <div class="col-day" id="tue">
+                              </div>
+                            </div>
+                            <div class="button">
+                              <p class="day">Wed</p>
+                              <div class="col-day" id="wed">
+                              </div>
+                            </div>
+                            <div class="button">
+                              <p class="day">Thu</p>
+                              <div class="col-day" id="thu">
+                              </div>
+                            </div>
+                            <div class="button">
+                              <p class="day">Fri</p>
+                              <div class="col-day" id="fri">
+                              </div>
+                            </div>
+                            <div class="button">
+                              <p class="day">Sat</p>
+                              <div class="col-day" id="sat">
+                              </div>
+                            </div>
+                            <div class="button">
+                              <p class="day">Sun</p>
+                              <div class="col-day" id="sun">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="times">
+                          <button class="time1">fdkfjdklfd</button>
+                          <button class="time2">fdkfjdklfd</button>
+                          <button class="time2">fdkfjdklfd</button>
                         </div>
                       </div>
-                      <div class="button">
-                        <p class="day">Tue</p>
-                        <div class="col-day" id="tue">
-                        </div>
-                      </div>
-                      <div class="button">
-                        <p class="day">Wed</p>
-                        <div class="col-day" id="wed">
-                        </div>
-                      </div>
-                      <div class="button">
-                        <p class="day">Thu</p>
-                        <div class="col-day" id="thu">
-                        </div>
-                      </div>
-                      <div class="button">
-                        <p class="day">Fri</p>
-                        <div class="col-day" id="fri">
-                        </div>
-                      </div>
-                      <div class="button">
-                        <p class="day">Sat</p>
-                        <div class="col-day" id="sat">
-                        </div>
-                      </div>
-                      <div class="button">
-                        <p class="day">Sun</p>
-                        <div class="col-day" id="sun">
-                        </div>
+                      <div class="time">
                       </div>
                     </div>
                   </div>`
 
-  let container = document.getElementById("container")
+  let container = document.getElementById("month__btns")
   let nextBtn  = document.createElement("button")
-  nextBtn.innerHTML = "Next"
+  nextBtn.innerHTML = `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 59.414 59.414" style="enable-background:new 0 0 59.414 59.414;" xml:space="preserve">
+  <polygon points="45.268,1.414 43.854,0 14.146,29.707 43.854,59.414 45.268,58 16.975,29.707 "/>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  <g>
+  </g>
+  </svg>`
   container.appendChild(nextBtn)
   nextBtn.addEventListener("click", () => {
     next()
   })
 
   let prevBtn  = document.createElement("button")
-  prevBtn.innerHTML = "Prev"
+  prevBtn.innerHTML = `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 59.414 59.414" style="enable-background:new 0 0 59.414 59.414;" xml:space="preserve">
+    <polygon points="15.561,0 14.146,1.414 42.439,29.707 14.146,58 15.561,59.414 45.268,29.707 "/>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    <g>
+    </g>
+    </svg>`
   container.appendChild(prevBtn)
   prevBtn.addEventListener("click", () => {
     prev()
@@ -311,58 +349,58 @@ function render() {
   let parent = document.getElementById("mon")
   for(let i=0; i < mon().length; i++){
     let child  = document.createElement("button")
-    child.innerHTML = mon()[i]
     child.classList.add("btn-mon")
+    child.setAttribute("id", "available")
+    mon()[i] == " " ?  child.style.visibility = 'hidden' : child.innerHTML = mon()[i] ;
     parent.appendChild(child)
   }
 
   let parent2 = document.getElementById("tue")
   for(let i=0; i < tue().length; i++){
     let child  = document.createElement("button")
-    child.innerHTML = tue()[i]
-    child.classList.add("btn-tue")
+    child.classList.add("btn-tue", "today")
+    tue()[i] == " " ?  child.style.visibility = 'hidden' : child.innerHTML = tue()[i] ;
     parent2.appendChild(child)
   }
 
   let parent3 = document.getElementById("wed")
   for(let i=0; i < wed().length; i++){
     let child  = document.createElement("button")
-    child.innerHTML = wed()[i]
     child.classList.add("btn-wed")
+    wed()[i] == " " ?  child.style.visibility = 'hidden' : child.innerHTML = wed()[i] ;
     parent3.appendChild(child)
   }
 
   let parent4 = document.getElementById("thu")
   for(let i=0; i < thu().length; i++){
     let child  = document.createElement("button")
-    child.innerHTML = thu()[i]
     child.classList.add("btn-thu")
+    thu()[i] == " " ?  child.style.visibility = 'hidden' : child.innerHTML = thu()[i] ;
     parent4.appendChild(child)
   }
 
   let parent5 = document.getElementById("fri")
   for(let i=0; i < fri().length; i++){
     let child  = document.createElement("button")
-    child.innerHTML = fri()[i]
     child.classList.add("btn-fri")
+    fri()[i] == " " ?  child.style.visibility = 'hidden' : child.innerHTML = fri()[i] ;
     parent5.appendChild(child)
   }
 
   let parent6 = document.getElementById("sat")
   for(let i=0; i < sat().length; i++){
     let child  = document.createElement("button")
-    child.innerHTML = sat()[i]
     child.classList.add("btn-sat")
+    sat()[i] == " " ?  child.style.visibility = 'hidden' : child.innerHTML = sat()[i] ;
     parent6.appendChild(child)
   }
 
   let parent7 = document.getElementById("sun")
   for(let i=0; i < sun().length; i++){
     let child  = document.createElement("button")
-    child.innerHTML = sun()[i]
     child.classList.add("btn-sun")
+    sun()[i] == " " ?  child.style.visibility = 'hidden' : child.innerHTML = sun()[i] ;
     parent7.appendChild(child)
   }
 }
 render();
-emptySpace()

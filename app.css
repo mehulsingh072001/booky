@@ -1,6 +1,151 @@
-#container .dates{
-    display: grid;
-    grid-template-columns: repeat(7, 2rem);
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
 }
+html{
+    font-size: 62.5%;
+}
+body{
+    font-family: 'Nunito Sans', sans-serif;
+    --color-primary: #CCD6F6;
+    --color-tertiary: #8892B0;
+    --color-background: rgba(136, 146, 176, 0.05);
+}
+
+.heading-1{
+    font-size: 2.8rem;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+.heading-2{
+    font-size: 2rem;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+.heading-3{
+    font-size: 1.6rem;
+    color: var(--color-tertiary);
+    font-weight: 700;
+}
+
+.copy__para--medium{
+    font-size: 1.6rem;
+    color: var(--color-tertiary);
+}
+
+#app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #26282B;
+}
+#container{
+    max-width: 60%;
+    width: max-content;
+    background-color: var(--color-background);
+    height: 65%;
+    display: flex;
+    flex: 1 1 auto;
+    /* transition: all 2s; */
+}
+#details{
+    width: 40%;
+    display: grid;
+    grid-template-rows: repeat(4, max-content);
+    border-right: 1px solid #8892b0;
+    padding: 3rem 2rem;
+}
+#details p{
+    width: 90%;
+    margin-top: 3rem;
+}
+
+#month{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    margin-bottom: 2rem;
+}
+
+#month p{
+    color: var(--color-primary);
+}
+
 button{
     cursor: pointer;
+    font-family: inherit;
+    background-color: transparent;
+    border: none;
+}
+
+svg{
+    height: 1rem;
+    width: 1rem;
+    fill: white;
+}
+
+#month__btns{
+    display: flex;
+    column-gap: 2rem;
+}
+
+#select-container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 3rem;
+    padding: 3rem 4rem;
+    width: 60%;
+    flex: 1 1 1%;
+}
+
+#select-container {
+    font-size: 1.6rem;
+    color: var(--color-tertiary);
+}
+
+#select-container .date-time{
+    display: flex;
+    flex: 1 1 300px;
+    column-gap: 8rem;
+    width: 60%;
+}
+
+#select-container .dates{
+    width: 60%;
+    display: flex;
+    grid-template-columns: repeat(7, 5rem);
+}
+
+#select-container .dates button {
+    margin-top: 1rem;
+    background-color: transparent;
+    font-size: 1.6rem;
+    color: var(--color-tertiary);
+    border: none;
+    padding: 1rem;
+    border-radius: 50%;
+}
+
+#select-container .day {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary);
+}
+
+#select-container .times{
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    width: 40%;
+}
+
+#select-container .dates #available{
+    color: #6997FF;
+    background-color: rgba(63, 110, 218, 0.39);
+}
+#select-container .dates .today{
+}
+
